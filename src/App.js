@@ -1,5 +1,4 @@
 import  React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import {
@@ -13,6 +12,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Profile from './pages/Profile';
 import Dashboard from './pages/Dashboard';
+import Product from './pages/Product';
 
 class  App extends Component {
   render(){
@@ -36,6 +36,9 @@ class  App extends Component {
             <li>
               <Link to="/profile">Profile</Link>
             </li>
+            <li>
+              <Link to="/product">Product</Link>
+            </li>
           </ul>
   
           <hr />
@@ -56,6 +59,9 @@ class  App extends Component {
             <Route path="/profile">
               <Profile/>
             </Route>
+            <Router path="/product">
+              <Product/>
+            </Router>
           </Switch>
         </div>
       </Router>
