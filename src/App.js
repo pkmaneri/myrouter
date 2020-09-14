@@ -1,4 +1,4 @@
-import  React, { Component } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 
 import {
@@ -14,38 +14,36 @@ import Profile from './pages/Profile';
 import Dashboard from './pages/Dashboard';
 import Product from './pages/Product';
 
-class  App extends Component {
-  render(){
+class App extends Component {
+  render() {
 
     return (
       <Router>
-        <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
+        <div className="container"> 
+          <ul className="nav nav-pills nav-fill">
+            <li className="nav-item">
+              <Link className="nav-link " to="/">Home</Link>
             </li>
-            <li>
-              <Link to="/about">About</Link>
+            <li className="nav-item">
+              <Link className="nav-link " to="/about">About</Link>
             </li>
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
+            <li className="nav-item">
+              <Link className="nav-link " to="/dashboard">Dashboard</Link>
             </li>
-            <li>
-              <Link to="/contact">Contact</Link>
+            <li className="nav-item">
+              <Link className="nav-link " to="/contact">Contact</Link>
             </li>
-            <li>
-              <Link to="/profile">Profile</Link>
+            <li className="nav-item">
+              <Link className="nav-link " to="/profile">Profile</Link>
             </li>
-            <li>
-              <Link to="/product">Product</Link>
+            <li className="nav-item">
+              <Link className="nav-link " to="/product">Product</Link>
             </li>
           </ul>
-  
-          <hr />
-  
+
           <Switch>
             <Route exact path="/">
-              <Home/>
+              <Home />
             </Route>
             <Route path="/about">
               <About />
@@ -54,20 +52,20 @@ class  App extends Component {
               <Dashboard />
             </Route>
             <Route path="/contact">
-              <Contact/>
+              <Contact />
             </Route>
             <Route path="/profile">
-              <Profile/>
+              <Profile />
             </Route>
             <Router path="/product">
-              <Product/>
+              <Product />
             </Router>
           </Switch>
         </div>
       </Router>
     );
   }
-  
+
 }
 
 // You can think of these components as "pages"
