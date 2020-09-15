@@ -61,6 +61,12 @@ export default class Contact extends Component {
             checkbox: checkbox
         })
     }
+    handleSign(){
+    const state = JSON.stringify(this.state);
+    console.log(state);
+    localStorage.setItem("contact", state)
+}
+
 
     render() {
         return (
@@ -108,7 +114,7 @@ export default class Contact extends Component {
                             </label>
                         </div>
                     </div>
-                    <button type="submit" className="btn btn-primary">Sign in</button>
+                    <button onClick={this.handleSign.bind(this)}>Sign</button>
                 </form>
                 {this.state.address},{this.state.address2},{this.state.city},{this.state.state},
                 {this.state.zip}{this.state.checkbox}
