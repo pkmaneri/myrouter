@@ -9,7 +9,7 @@ export default class Contact extends Component {
         zip: "",
     };
     componentDidMount() {
-        const foundState = localStorage.getItem("contack")
+        const foundState = localStorage.getItem("contact")
         console.log(foundState)
         if (foundState != null) {
             const foundStateObject = JSON.parse(foundState);
