@@ -15,7 +15,8 @@ export default class Product extends Component {
         if (foundState != null) {
             const foundStateObject = JSON.parse(foundState);
             this.setState(prevState => {
-                return foundStateObject;
+                prevState.dataArr = foundStateObject;
+                return prevState;
             })
         }
     }
@@ -42,14 +43,15 @@ export default class Product extends Component {
     }
     handleSave() {
         this.setState(prevState => {
+            prevState.dataArr.push(prevState.currentData);
             console.log(prevState)
-            prevState.dataArr.push(prevState.currentData)
-            return prevState
+            return prevState;
+        }, () => {
+            const productdataArrstate = JSON.stringify(this.state.dataArr);
+            localStorage.setItem("product", productdataArrstate)
+
         })
-    }
-    handlePersists() {
-        const productdataArrstate = JSON.stringify(this.state.dataArr);
-        localStorage.setItem("product", productdataArrstate)
+
     }
 
     render() {
@@ -78,8 +80,7 @@ export default class Product extends Component {
                         value={this.state.price}
                         onChange={this.handlePrice.bind(this)} />
                 </div>
-                <button onClick={this.handleSave.bind(this)} class="btn btn-outline-primary">Save</button>
-                <button onClick={this.handlePersists.bind(this)} class="btn btn-outline-secondary">Persists</button>
+                <button onClick={this.handleSave.bind(this)} className="btn btn-outline-primary">Save</button>
 
                 {this.state.currentData.name}{this.state.currentData.category}{this.state.currentData.price}
             </div>
