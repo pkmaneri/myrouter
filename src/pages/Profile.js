@@ -11,36 +11,57 @@ export default class Profile extends Component {
         const foundState = localStorage.getItem("profile");
         console.log(foundState)
         if(foundState != null) {
-            const foundStateObject = JSON.parse(foundState);
+            const foundStateArr = JSON.parse(foundState);
             this.setState(prevState => {
-                return foundStateObject
+                return  {
+                    dataArr: foundStateArr
+                }
             })
         }
-       
     }
-   
     handleFirstname(e) {
         console.log(e)
         const firstname = (e.target.value)
         this.setState(prevState => {
             prevState.firstname = firstname;
-            return prevState;
-        })
-    }
+            return { 
+                currentData: {
+                firstname: firstname,
+                lastname: prevState.currentData.lastname,
+                email: prevState.currentData.email,
+                password: prevState.currentData.password
+            }
+        }
+    })
+}
     handleLasttname(e) {
         console.log(e)
         const lastname = (e.target.value)
         this.setState(prevState => {
             prevState.lastname = lastname;
-            return prevState;
-        })
-    }
+            return  { 
+                currentData: {
+                lastname: lastname,
+                firstname: prevState.currentData.firstname,
+                email: prevState.currentData.email,
+                password: prevState.currentData.password
+            }
+        }
+    })
+}
     handleEmail(e) {
         console.log(e)
         const email = (e.target.value)
         this.setState(prevState => {
             prevState.email = email;
-            return prevState;
+            return {
+                currentData : {
+                    email : email,
+                    firstname : prevState.currentData.firstname,
+                    lastname : prevState.currentData.lastname,
+                    password : prevState.currentData.password 
+                }
+            }
         })
     }
     handlePassword(e) {
@@ -48,9 +69,16 @@ export default class Profile extends Component {
         const password = (e.target.value)
         this.setState(prevState => {
             prevState.password = password;
-            return prevState;
-        })
-    }
+            return {
+            currentData : {
+                password : password,
+                firstname : prevState.currentData.firstname,
+                lastname : prevState.currentData.lastname,
+                email : prevState.currentData.email
+            }
+        }
+    })
+}
     handleSave() {
         const state = JSON.stringify(this.state);
         console.log(state);

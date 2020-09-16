@@ -12,9 +12,11 @@ export default class Contact extends Component {
         const foundState = localStorage.getItem("contact")
         console.log(foundState)
         if (foundState != null) {
-            const foundStateObject = JSON.parse(foundState);
+            const foundStateArr = JSON.parse(foundState);
             this.setState(prevState => {
-                return foundStateObject;
+                return {
+                    dataArr: foundStateArr
+                }
             })
         }
     }
@@ -23,37 +25,77 @@ export default class Contact extends Component {
         const address = (e.target.value)
         this.setState(prevState => {
             prevState.address = address;
-            return prevState;
-        })
-    }
+            return  {
+                currentData: {
+                address: address,
+                address2: prevState.currentData.address2,
+                city: prevState.currentData.city,
+                state : prevState.currentData.state,
+                zip : prevState.currentData.zip
+            }
+        }
+    })
+}
     handleAddress2(e) {
         const address2 = (e.target.value)
         this.setState(prevState => {
             prevState.address2 = address2;
-            return prevState;
-        })
-    }
+            return  {
+                currentData: {
+                address2: address2,
+                address: prevState.currentData.address,
+                city: prevState.currentData.city,
+                state : prevState.currentData.state,
+                zip : prevState.currentData.zip
+            }
+        }
+    })
+}
     handleCity(e) {
         const city = (e.target.value)
         this.setState(prevState => {
             prevState.city = city;
-            return prevState;
-        })
-    }
+            return  {
+                currentData: {
+                city: city,
+                address: prevState.currentData.address,
+                address2: prevState.currentData.address2,
+                state : prevState.currentData.state,
+                zip : prevState.currentData.zip
+            }
+        }
+    })
+}
     handleState(e) {
         const state = (e.target.value)
         this.setState(prevState => {
             prevState.state = state;
-            return prevState;
-        })
-    }
+            return  {
+                currentData: {
+                state: state,
+                address : prevState.currentData.address,
+                address2: prevState.currentData.address2,
+                city: prevState.currentData.city,
+                zip : prevState.currentData.zip
+            }
+        }
+    })
+}
     handleZip(e) {
         const zip = (e.target.value)
         this.setState(prevState => {
             prevState.zip = zip;
-            return prevState;
-        })
-    }
+            return  {
+                currentData: {
+                zip: zip,
+                address : prevState.currentData.address,
+                address2: prevState.currentData.address2,
+                city: prevState.currentData.city,
+                state : prevState.currentData.state
+            }
+        }
+    })
+}
     handleCheckbox(e) {
         console.log(e)
         const checkbox = (e.target.checked)

@@ -16,7 +16,7 @@ export default class Product extends Component {
             const foundStateArr = JSON.parse(foundState);
             this.setState(prevState => {
                 return {
-                    dataArr:foundStateArr
+                    dataArr: foundStateArr
                 }
             })
         }
