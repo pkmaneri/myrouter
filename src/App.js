@@ -5,7 +5,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  NavLink
 } from "react-router-dom";
 import Home from './pages/Home';
 import About from './pages/About';
@@ -22,27 +23,27 @@ class App extends Component {
         <div className="container"> 
           <ul className="nav nav-pills nav-fill">
             <li className="nav-item">
-              <Link className="nav-link " to="/">Home</Link>
+              <NavLink className="nav-link " to="/home" activeClassName="active"> Home</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link " to="/about">About</Link>
+              <NavLink className="nav-link " to="/about" activeClassName="active">About</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link " to="/dashboard">Dashboard</Link>
+              <NavLink className="nav-link " to="/dashboard"   activeClassName="active">Dashboard</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link " to="/contact">Contact</Link>
+              <NavLink className="nav-link " to="/contact">Contact</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link " to="/profile">Profile</Link>
+              <NavLink className="nav-link " to="/profile">Profile</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link " to="/product">Product</Link>
+              <NavLink className="nav-link " to="/product">Product</NavLink>
             </li>
           </ul>
 
           <Switch>
-            <Route exact path="/">
+            <Route exact path="/home">
               <Home />
             </Route>
             <Route path="/about">
