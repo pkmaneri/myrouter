@@ -23,13 +23,20 @@ export default class Product extends Component {
     handleName(e) {
         const name = (e.target.value)
         this.setState(prevState => {
-            prevState.currentData.name = name;
-            return prevState
+            return {
+                dataArr : prevState.dataArr,
+                currentData : {
+                    name : name,
+                    price : prevState.currentData.price,
+                    category: prevState.currentData.category
+                }
+            }
         })
     }
     handleCategory(e) {
         const category = (e.target.value)
         this.setState(prevState => {
+            alert(1)
             prevState.currentData.category = category;
             return prevState
         })
@@ -43,9 +50,10 @@ export default class Product extends Component {
     }
     handleSave() {
         this.setState(prevState => {
-            prevState.dataArr.push(prevState.currentData);
-            console.log(prevState)
-            return prevState;
+            return {
+                dataArr : [...prevState.dataArr, prevState.currentData],
+                currentData : prevState.currentData
+            };
         }, () => {
             const productdataArrstate = JSON.stringify(this.state.dataArr);
             localStorage.setItem("product", productdataArrstate)
