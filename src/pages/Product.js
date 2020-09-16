@@ -9,7 +9,6 @@ export default class Product extends Component {
             price: ""
         }
     }
-
     componentDidMount() {
         const foundState = localStorage.getItem("product")
         console.log(foundState)
@@ -59,11 +58,11 @@ export default class Product extends Component {
 
                 <div className="form-group">
                     <label htmlFor="inputName">Name</label>
-                    <input type="text" className="form-control" id="inputName" placeholder="1234 Main St"
+                    <input type="text" className="form-control" id="inputName" placeholder="Product name"
                         value={this.state.name}
                         onChange={this.handleName.bind(this)} />
                 </div>
-                <div className="form-group col-md-4">
+                <div className="form-group">
                     <label htmlFor="inputcategory">Category</label>
                     <select id="inputcategory" className="form-control"
                         value={this.state.category} onChange={this.handleCategory.bind(this)}>
@@ -75,15 +74,14 @@ export default class Product extends Component {
                 </div>
                 <div className="form-group">
                     <label htmlFor="inputPrice">Price</label>
-                    <input type="number" className="form-control" id="inputPrice" placeholder="1234 Main St"
+                    <input type="number" className="form-control" id="inputPrice" placeholder="Amount"
                         value={this.state.price}
                         onChange={this.handlePrice.bind(this)} />
                 </div>
-                <button onClick={this.handleSave.bind(this)}>Save</button>
-                <button onClick={this.handlePersists.bind(this)}>Persists</button>
+                <button onClick={this.handleSave.bind(this)} class="btn btn-outline-primary">Save</button>
+                <button onClick={this.handlePersists.bind(this)} class="btn btn-outline-secondary">Persists</button>
 
-                {this.state.currentData.name},{this.state.currentData.category},{this.state.currentData.price}
-
+                {this.state.currentData.name}{this.state.currentData.category}{this.state.currentData.price}
             </div>
         )
     }
