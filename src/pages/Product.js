@@ -6,7 +6,9 @@ export default class Product extends Component {
         currentData: {
             name: "",
             category: "",
-            price: ""
+            price: "",
+            featurelist:[],
+            feature :""
         }
     }
     componentDidMount() {
@@ -22,12 +24,16 @@ export default class Product extends Component {
         }
     }
     handleName(e) {
-        const name = (e.target.value)
+        const name = (e.target.value);
+
         this.setState(prevState => {
+            console.log(prevState)
             return {
                 dataArr: prevState.dataArr,
                 currentData: {
                     name: name,
+                    featurelist: prevState.currentData.featurelist,
+                    feature: prevState.currentData.feature,
                     price: prevState.currentData.price,
                     category: prevState.currentData.category
                 }
@@ -42,6 +48,8 @@ export default class Product extends Component {
                 dataArr: prevState.dataArr,
                 currentData: {
                     category: category,
+                    featurelist: prevState.currentData.featurelist,
+                    feature: prevState.currentData.feature,
                     name: prevState.currentData.name,
                     price: prevState.currentData.price
                 }
@@ -55,12 +63,15 @@ export default class Product extends Component {
             return {
                 currentData: {
                     price: price,
+                    featurelist: prevState.currentData.featurelist,
+                    feature: prevState.currentData.feature,
                     category: prevState.currentData.category,
                     name: prevState.currentData.name
                 }
             }
         })
     }
+
     handleSave() {
         this.setState(prevState => {
             return {
@@ -70,10 +81,37 @@ export default class Product extends Component {
         }, () => {
             const productdataArrstate = JSON.stringify(this.state.dataArr);
             localStorage.setItem("product", productdataArrstate)
-
         })
-
     }
+    handleFeature(e){
+        this.setState(prevState => {
+            return {
+                currentData: {
+                    featurelist: [...prevState.currentData.featurelist,prevState.currentData.feature],
+                    category: prevState.currentData.category,
+                    name: prevState.currentData.name,
+                    price: prevState.currentData.price,
+                    feature: prevState.currentData.feature,
+                }
+            }
+        })
+    }
+    
+    handleFeatureInput(e){
+        const feature = e.target.value;
+        this.setState(prevState => {
+            return {
+                currentData: {
+                    featurelist: prevState.currentData.featurelist,
+                    category: prevState.currentData.category,
+                    name: prevState.currentData.name,
+                    price: prevState.currentData.price,
+                    feature : feature
+                }
+            }
+        })
+    }
+    
 
     render() {
         return (
@@ -101,7 +139,17 @@ export default class Product extends Component {
                         value={this.state.price}
                         onChange={this.handlePrice.bind(this)} />
                 </div>
-                
+                <div>
+                    <h3>Feature</h3>
+                        <input
+                            onChange={this.handleFeatureInput.bind(this)}    
+                            value={this.state.currentData.feature}                    
+                        />
+                        <button onClick={this.handleFeature.bind(this)}>
+                            Add 
+                        </button>
+                    
+                </div>
                 <button onClick={this.handleSave.bind(this)} className="btn btn-outline-primary">Save</button>
 
                 {/* {this.state.currentData.name}{this.state.currentData.category}{this.state.currentData.price} */}
