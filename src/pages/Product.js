@@ -7,8 +7,10 @@ export default class Product extends Component {
             name: "",
             category: "",
             price: "",
-            featurelist:[],
-            feature :""
+            featurelist: [],
+            feature: "",
+            commentlist: [],
+            comment: ""
         }
     }
     componentDidMount() {
@@ -35,7 +37,9 @@ export default class Product extends Component {
                     featurelist: prevState.currentData.featurelist,
                     feature: prevState.currentData.feature,
                     price: prevState.currentData.price,
-                    category: prevState.currentData.category
+                    category: prevState.currentData.category,
+                    commentlist: prevState.currentData.commentlist,
+                    comment: prevState.currentData.comment
                 }
             }
         })
@@ -51,7 +55,9 @@ export default class Product extends Component {
                     featurelist: prevState.currentData.featurelist,
                     feature: prevState.currentData.feature,
                     name: prevState.currentData.name,
-                    price: prevState.currentData.price
+                    price: prevState.currentData.price,
+                    commentlist: prevState.currentData.commentlist,
+                    comment: prevState.currentData.comment
                 }
             }
         })
@@ -66,7 +72,9 @@ export default class Product extends Component {
                     featurelist: prevState.currentData.featurelist,
                     feature: prevState.currentData.feature,
                     category: prevState.currentData.category,
-                    name: prevState.currentData.name
+                    name: prevState.currentData.name,
+                    commentlist: prevState.currentData.commentlist,
+                    comment: prevState.currentData.comment
                 }
             }
         })
@@ -83,21 +91,24 @@ export default class Product extends Component {
             localStorage.setItem("product", productdataArrstate)
         })
     }
-    handleFeature(e){
+    handleFeature(e) {
         this.setState(prevState => {
             return {
                 currentData: {
-                    featurelist: [...prevState.currentData.featurelist,prevState.currentData.feature],
+                    featurelist: [...prevState.currentData.featurelist, prevState.currentData.feature],
                     category: prevState.currentData.category,
                     name: prevState.currentData.name,
                     price: prevState.currentData.price,
                     feature: prevState.currentData.feature,
+                    commentlist: prevState.currentData.commentlist,
+                    comment: prevState.currentData.comment
+
                 }
             }
         })
     }
-    
-    handleFeatureInput(e){
+
+    handleFeatureInput(e) {
         const feature = e.target.value;
         this.setState(prevState => {
             return {
@@ -106,12 +117,49 @@ export default class Product extends Component {
                     category: prevState.currentData.category,
                     name: prevState.currentData.name,
                     price: prevState.currentData.price,
-                    feature : feature
+                    feature: feature,
+                    commentlist: prevState.currentData.commentlist,
+                    comment: prevState.currentData.comment
+
                 }
             }
         })
     }
-    
+    handleCommentInput(e) {
+        const comment = e.target.value;
+        this.setState(prevState => {
+            return {
+                currentData: {
+                    featurelist: prevState.currentData.featurelist,
+                    category: prevState.currentData.category,
+                    name: prevState.currentData.name,
+                    price: prevState.currentData.price,
+                    feature: prevState.currentData.feature,
+                    commentlist: prevState.currentData.commentlist,
+                    comment: comment
+                }
+            }
+        })
+    }
+    handleComment(e) {
+        this.setState(prevState => {
+            return {
+                currentData: {
+                    commentlist: [...prevState.currentData.commentlist, prevState.currentData.comment],
+                    category: prevState.currentData.category,
+                    name: prevState.currentData.name,
+                    price: prevState.currentData.price,
+                    feature: prevState.currentData.feature,
+                    comment: prevState.currentData.comment,
+                    featurelist: prevState.currentData.featurelist,
+
+                }
+            }
+        })
+    }
+
+
+
 
     render() {
         return (
@@ -141,14 +189,22 @@ export default class Product extends Component {
                 </div>
                 <div>
                     <h3>Feature</h3>
-                        <input
-                            onChange={this.handleFeatureInput.bind(this)}    
-                            value={this.state.currentData.feature}                    
-                        />
-                        <button onClick={this.handleFeature.bind(this)}>
-                            Add 
+                    <input
+                        onChange={this.handleFeatureInput.bind(this)}
+                        value={this.state.currentData.feature}
+                    />
+                    <button onClick={this.handleFeature.bind(this)}>
+                        Add
                         </button>
-                    
+                </div>
+                <div>
+                    <h1>Comment</h1>
+                    <input
+                        onChange={this.handleCommentInput.bind(this)}
+                        value={this.state.currentData.comment} />
+                    <button onClick={this.handleComment.bind(this)}>
+                        Add
+                        </button>
                 </div>
                 <button onClick={this.handleSave.bind(this)} className="btn btn-outline-primary">Save</button>
 
