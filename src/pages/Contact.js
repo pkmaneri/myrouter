@@ -2,11 +2,13 @@ import React, { Component } from "react";
 
 export default class Contact extends Component {
     state = {
+        currentData:{
         address: "",
         address2: "",
         city: "",
         state: "",
         zip: "",
+    }
     };
     componentDidMount() {
         const foundState = localStorage.getItem("contact")
@@ -14,6 +16,7 @@ export default class Contact extends Component {
         if (foundState != null) {
             const foundStateArr = JSON.parse(foundState);
             this.setState(prevState => {
+
                 return {
                     dataArr: foundStateArr
                 }
@@ -24,7 +27,7 @@ export default class Contact extends Component {
         console.log(e)
         const address = (e.target.value)
         this.setState(prevState => {
-            prevState.address = address;
+
             return  {
                 currentData: {
                 address: address,
@@ -39,7 +42,7 @@ export default class Contact extends Component {
     handleAddress2(e) {
         const address2 = (e.target.value)
         this.setState(prevState => {
-            prevState.address2 = address2;
+
             return  {
                 currentData: {
                 address2: address2,
@@ -54,7 +57,7 @@ export default class Contact extends Component {
     handleCity(e) {
         const city = (e.target.value)
         this.setState(prevState => {
-            prevState.city = city;
+
             return  {
                 currentData: {
                 city: city,
@@ -69,7 +72,7 @@ export default class Contact extends Component {
     handleState(e) {
         const state = (e.target.value)
         this.setState(prevState => {
-            prevState.state = state;
+
             return  {
                 currentData: {
                 state: state,
@@ -84,7 +87,7 @@ export default class Contact extends Component {
     handleZip(e) {
         const zip = (e.target.value)
         this.setState(prevState => {
-            prevState.zip = zip;
+
             return  {
                 currentData: {
                 zip: zip,
@@ -158,8 +161,8 @@ export default class Contact extends Component {
                     </div>
                     <button onClick={this.handleSign.bind(this)}>Sign</button>
                 </form>
-                {this.state.address},{this.state.address2},{this.state.city},{this.state.state},
-                {this.state.zip}{this.state.checkbox}
+                {/* {this.state.address},{this.state.address2},{this.state.city},{this.state.state},
+                {this.state.zip}{this.state.checkbox} */}
             </div>
         )
     }

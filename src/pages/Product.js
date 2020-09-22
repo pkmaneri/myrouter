@@ -8,7 +8,6 @@ export default class Product extends Component {
             category: "",
             price: "",
             featurelist: [],
-            feature: "",
             commentlist: [],
             comment: ""
         }
@@ -87,7 +86,17 @@ export default class Product extends Component {
                 currentData: prevState.currentData
             };
         }, () => {
-            const productdataArrstate = JSON.stringify(this.state.dataArr);
+            const filteredProductData = this.state.dataArr.map((product)=>{
+                return {
+                    name: product.name,
+                    category: product.category,
+                    price: product.price,
+                    featurelist:product.featurelist,
+                    commentlist: product.commentlist,
+
+                }
+            })
+            const productdataArrstate = JSON.stringify(filteredProductData);
             localStorage.setItem("product", productdataArrstate)
         })
     }
