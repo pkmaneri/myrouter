@@ -43,6 +43,7 @@ export default class Home extends Component {
                                 )
                             })}
                         </ul>
+                        Comments:
                         <ul>
                             {product.commentlist.map((comment,k)=>{
                                 return(

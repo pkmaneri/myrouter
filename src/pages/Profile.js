@@ -2,10 +2,12 @@ import React, { Component } from "react";
 
 export default class Profile extends Component {
     state =  {
+        currentData: {
         firstname: "",
         lastname: "",
         email: "",
         password: ""
+    }
     };
     componentDidMount() {
         const foundState = localStorage.getItem("profile");
@@ -23,7 +25,6 @@ export default class Profile extends Component {
         console.log(e)
         const firstname = (e.target.value)
         this.setState(prevState => {
-            prevState.firstname = firstname;
             return { 
                 currentData: {
                 firstname: firstname,
@@ -34,11 +35,10 @@ export default class Profile extends Component {
         }
     })
 }
-    handleLasttname(e) {
+    handleLastname(e) {
         console.log(e)
         const lastname = (e.target.value)
         this.setState(prevState => {
-            prevState.lastname = lastname;
             return  { 
                 currentData: {
                 lastname: lastname,
@@ -53,7 +53,6 @@ export default class Profile extends Component {
         console.log(e)
         const email = (e.target.value)
         this.setState(prevState => {
-            prevState.email = email;
             return {
                 currentData : {
                     email : email,
@@ -68,7 +67,6 @@ export default class Profile extends Component {
         console.log(e)
         const password = (e.target.value)
         this.setState(prevState => {
-            prevState.password = password;
             return {
             currentData : {
                 password : password,
@@ -98,7 +96,7 @@ export default class Profile extends Component {
                     <div className="form-group col-md-6">
                         <input type="text" className="form-control" placeholder="Last name"
                             value={this.state.lastname}
-                            onChange={this.handleLasttname.bind(this)} />
+                            onChange={this.handleLastname.bind(this)} />
                     </div>
                     <div className="form-group col-md-6">
                         <label htmlFor="inputEmail4">Email</label>
@@ -116,7 +114,7 @@ export default class Profile extends Component {
                 <button onClick={this.handleSave.bind(this)}>
                     Save
                 </button>
-                {this.state.firstname}, {this.state.lastname},{this.state.email},{this.state.password}
+                {/* {this.state.firstname}, {this.state.lastname},{this.state.email},{this.state.password} */}
 
             </div>
 
