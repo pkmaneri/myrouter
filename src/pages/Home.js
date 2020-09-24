@@ -2,7 +2,9 @@ import React, { Component } from "react";
 
 export default class Home extends Component {
     state = {
-        "product": []
+        "product": [],
+        "addToCart" : []
+    
     }
     componentDidMount() {
         const foundState = localStorage.getItem("product")
@@ -14,6 +16,18 @@ export default class Home extends Component {
                 return prevState;
             })
         }
+    }
+    handleAddToCart(product, index) {
+        this.setState(prevState => {
+            return {
+                addToCart : [...prevState.addToCart, product],
+                product : prevState.product
+            };
+        }, () => {
+            const productdataArrstate = JSON.stringify(this.state.addToCart);
+            localStorage.setItem("productAddedToCart", productdataArrstate)
+           
+        })
     }
 
     render() {
@@ -51,6 +65,8 @@ export default class Home extends Component {
                                 )
                             })}
                         </ul>
+                        <button onClick={this.handleAddToCart.bind(this, product , i)}>AddToCart</button>
+                        
 
                     </div>
 
