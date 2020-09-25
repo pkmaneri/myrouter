@@ -29,6 +29,20 @@ export default class Home extends Component {
            
         })
     }
+    handleRe(product, index) {
+        this.setState(prevState => {
+            return {
+                remove : [...prevState.remove, product],
+                product : prevState.product,
+                AddToCart: prevState.addToCart
+            };
+        }, () => {
+            const productdataArrstate = JSON.stringify(this.state.remove);
+            localStorage.setItem("productremoveToCart", productdataArrstate)
+           
+        })
+    }
+
 
     render() {
         console.log(typeof this.state)
@@ -49,7 +63,7 @@ export default class Home extends Component {
                         </div>
                         Features :
                         <ul>
-                            {product.featurelist.map((feature, j) => {
+    2                        {product.featurelist.map((feature, j) => {
                                 return (
                                     <li key={j}>
                                         {feature}
@@ -66,7 +80,7 @@ export default class Home extends Component {
                             })}
                         </ul>
                         <button onClick={this.handleAddToCart.bind(this, product , i)}>AddToCart</button>
-                        
+    
 
                     </div>
 

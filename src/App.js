@@ -14,6 +14,7 @@ import Contact from './pages/Contact';
 import Profile from './pages/Profile';
 import Dashboard from './pages/Dashboard';
 import Product from './pages/Product';
+import Cart from'./pages/Cart'
 
 class App extends Component {
   render() {
@@ -40,6 +41,9 @@ class App extends Component {
             <li className="nav-item">
               <NavLink className="nav-link " to="/product">Product</NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link " to="/cart">Cart</NavLink>
+            </li>
           </ul>
 
           <Switch>
@@ -58,8 +62,11 @@ class App extends Component {
             <Route path="/profile">
               <Profile />
             </Route>
-            <Router path="/product">
+            <Router path="/product">         
               <Product />
+            </Router>
+            <Router path="/Cart">
+              <Cart/>
             </Router>
           </Switch>
         </div>
