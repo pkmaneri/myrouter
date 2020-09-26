@@ -3,8 +3,8 @@ import React, { Component } from "react";
 export default class Home extends Component {
     state = {
         "product": [],
-        "addToCart" : []
-    
+        "addToCart": []
+
     }
     componentDidMount() {
         const foundState = localStorage.getItem("product")
@@ -20,28 +20,16 @@ export default class Home extends Component {
     handleAddToCart(product, index) {
         this.setState(prevState => {
             return {
-                addToCart : [...prevState.addToCart, product],
-                product : prevState.product
+                addToCart: [...prevState.addToCart, product],
+                product: prevState.product
             };
         }, () => {
             const productdataArrstate = JSON.stringify(this.state.addToCart);
             localStorage.setItem("productAddedToCart", productdataArrstate)
-           
+
         })
     }
-    handleRe(product, index) {
-        this.setState(prevState => {
-            return {
-                remove : [...prevState.remove, product],
-                product : prevState.product,
-                AddToCart: prevState.addToCart
-            };
-        }, () => {
-            const productdataArrstate = JSON.stringify(this.state.remove);
-            localStorage.setItem("productremoveToCart", productdataArrstate)
-           
-        })
-    }
+
 
 
     render() {
@@ -52,18 +40,19 @@ export default class Home extends Component {
                 console.log(product)
 
                 return (
+
                     <div className="card" key={i}>
                         <div className="card-body">
+
                             <h5 className="card-title">{product.name}</h5>
                             <h6 className="card-subtitle mb-2 text-muted">{product.price}</h6>
                             <p className="card-text">
                                 {product.category}
                             </p>
-
                         </div>
                         Features :
                         <ul>
-    2                        {product.featurelist.map((feature, j) => {
+                            {product.featurelist.map((feature, j) => {
                                 return (
                                     <li key={j}>
                                         {feature}
@@ -73,15 +62,13 @@ export default class Home extends Component {
                         </ul>
                         Comments:
                         <ul>
-                            {product.commentlist.map((comment,k)=>{
-                                return(
-                                <li key={k}>{comment}</li>
+                            {product.commentlist.map((comment, k) => {
+                                return (
+                                    <li key={k}>{comment}</li>
                                 )
                             })}
                         </ul>
-                        <button onClick={this.handleAddToCart.bind(this, product , i)}>AddToCart</button>
-    
-
+                        <button onClick={this.handleAddToCart.bind(this, product, i)}>AddToCart</button>
                     </div>
 
                 )
