@@ -49,6 +49,26 @@ export default class Cart extends Component {
         })
 
     }
+    handleDecrement( i){
+        let productAddedToCart= [...this.state.productAddedToCart];
+
+        let product ={...this.state.productAddedToCart[i]};
+        product.quantity = product.quantity - 1;
+
+        productAddedToCart[i] = product;
+
+        this.setState(prevState => {
+            return {
+                "productAddedToCart": productAddedToCart ,
+                "total": productAddedToCart.reduce(this.reducer)
+            };
+        }, () => {
+            const xdataArrstate = JSON.stringify(this.state.productAddedToCart);
+            localStorage.setItem("productAddedToCart", xdataArrstate)
+        })
+
+    }
+
 
     render() {
         console.log(typeof this.state)
@@ -76,7 +96,7 @@ export default class Cart extends Component {
                             {product.name}
                         </td>
                         <td>
-                            <button >-</button>
+                            <button onClick={this.handleDecrement.bind(this,  i)}>-</button>
                             {product.quantity}
                             <button onClick={this.handleIncrement.bind(this,  i)}>+</button>
                         </td>
