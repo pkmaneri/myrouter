@@ -173,7 +173,6 @@ export default class Product extends Component {
     render() {
         return (
             <div className="container">
-
                 <div className="form-group">
                     <label htmlFor="inputName">Name</label>
                     <input type="text" className="form-control" id="inputName" placeholder="Product name"
