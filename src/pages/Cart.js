@@ -71,8 +71,7 @@ export default class Cart extends Component {
 
 
     render() {
-        console.log(typeof this.state)
-
+        console.log(this.state.productAddedToCart)
         return (
             <table className="table">
                 <thead>
@@ -91,7 +90,7 @@ export default class Cart extends Component {
                 <tbody>
                 {this.state.productAddedToCart.map((product, i) => {
                     return(
-                    <tr>
+                    <tr key={i}>
                         <td> 
                             {product.name}
                         </td>

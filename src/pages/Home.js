@@ -4,7 +4,6 @@ export default class Home extends Component {
     state = {
         "product": [],
         "addToCart": []
-
     }
     componentDidMount() {
         const foundState = localStorage.getItem("product")
@@ -21,7 +20,8 @@ export default class Home extends Component {
         this.setState(prevState => {
             return {
                 addToCart: [...prevState.addToCart, product],
-                product: prevState.product
+                product: prevState.product,
+
             };
         }, () => {
             const productdataArrstate = JSON.stringify(this.state.addToCart);
@@ -29,8 +29,35 @@ export default class Home extends Component {
 
         })
     }
+    handleRemoveFromCart(productToDeRemoved) {
+        var addToCartArr = [...this.state.addToCart];
+        
+        const findFn = function (product    ) {
+            console.log(product, productToDeRemoved)
+            return product.name === productToDeRemoved.name;
+        }
 
+        const index = addToCartArr.findIndex(findFn);
+        console.log(index)
 
+        // if (index > -1) {
+
+            addToCartArr.splice(index, 1);
+
+            this.setState(prevState => {
+                return {
+                    addToCart: addToCartArr,
+                    product: prevState.product,
+
+                };
+            }, () => {
+                const productdataArrstate = JSON.stringify(this.state.addToCart);
+                localStorage.setItem("productAddedToCart", productdataArrstate)
+
+            })
+        // }
+
+    }
 
     render() {
         console.log(typeof this.state)
@@ -46,6 +73,7 @@ export default class Home extends Component {
 
                             <h5 className="card-title">{product.name}</h5>
                             <h6 className="card-subtitle mb-2 text-muted">{product.price}</h6>
+
                             <p className="card-text">
                                 {product.category}
                             </p>
@@ -69,6 +97,7 @@ export default class Home extends Component {
                             })}
                         </ul>
                         <button onClick={this.handleAddToCart.bind(this, product, i)}>AddToCart</button>
+                        <button onClick={this.handleRemoveFromCart.bind(this, product)}>RemoveFromCart</button>
                     </div>
 
                 )
