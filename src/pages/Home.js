@@ -29,12 +29,12 @@ export default class Home extends Component {
 
         })
     }
-    handleRemoveFromCart(productToDeRemoved) {
+    handleRemoveFromCart(productToBeRemoved) {
         var addToCartArr = [...this.state.addToCart];
         
-        const findFn = function (product    ) {
-            console.log(product, productToDeRemoved)
-            return product.name === productToDeRemoved.name;
+        const findFn = function (product  ) {
+            console.log(product, productToBeRemoved)
+            return product.name === productToBeRemoved.name;
         }
 
         const index = addToCartArr.findIndex(findFn);
