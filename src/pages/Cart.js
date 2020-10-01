@@ -111,9 +111,9 @@ export default class Cart extends Component {
                                     {product.name}
                                 </td>
                                 <td>
-                                    <button onClick={this.handleDecrement.bind(this, i)}>-</button>
+                                    <button onClick={this.handleDecrement.bind(this, i)} className="btn btn-outline-primary">-</button>
                                     {product.quantity}
-                                    <button onClick={this.handleIncrement.bind(this, i)}>+</button>
+                                    <button onClick={this.handleIncrement.bind(this, i)} className="btn btn-outline-primary">+</button>
                                 </td>
                                 <td>
                                     {product.price}

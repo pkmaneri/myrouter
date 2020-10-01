@@ -56,7 +56,6 @@ export default class Home extends Component {
 
             })
         // }
-
     }
 
     render() {
@@ -99,10 +98,8 @@ export default class Home extends Component {
                         <button onClick={this.handleAddToCart.bind(this, product, i)}>AddToCart</button>
                         <button onClick={this.handleRemoveFromCart.bind(this, product)}>RemoveFromCart</button>
                     </div>
-
                 )
             })
-
         )
     }
 }

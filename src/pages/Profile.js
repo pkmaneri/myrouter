@@ -82,8 +82,6 @@ export default class Profile extends Component {
         console.log(state);
         localStorage.setItem("profile", state)
     }
-
-
     render() {
         return (
             <div className="container">
