@@ -115,7 +115,6 @@ export default class Profile extends Component {
                 {/* {this.state.firstname}, {this.state.lastname},{this.state.email},{this.state.password} */}
 
             </div>
-
         )
     }
 }
