@@ -15,6 +15,7 @@ import Profile from './pages/Profile';
 import Dashboard from './pages/Dashboard';
 import Product from './pages/Product';
 import Cart from'./pages/Cart'
+import Search from './pages/Search';
 
 class App extends Component {
   render() {
@@ -44,6 +45,9 @@ class App extends Component {
             <li className="nav-item">
               <NavLink className="nav-link " to="/cart">Cart</NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link " to="/search">Search</NavLink>
+            </li>
           </ul>
 
           <Switch>
@@ -65,8 +69,11 @@ class App extends Component {
             <Router path="/product">         
               <Product />
             </Router>
-            <Router path="/Cart">
+            <Router path="/cart">
               <Cart/>
+            </Router>
+            <Router path="/search">
+              <Search/>
             </Router>
           </Switch>
         </div>
