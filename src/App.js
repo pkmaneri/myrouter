@@ -16,6 +16,8 @@ import Dashboard from './pages/Dashboard';
 import Product from './pages/Product';
 import Cart from'./pages/Cart'
 import Search from './pages/Search';
+import ToDoList from './pages/ToDoList';
+
 
 class App extends Component {
   render() {
@@ -48,6 +50,9 @@ class App extends Component {
             <li className="nav-item">
               <NavLink className="nav-link " to="/search">Search</NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link " to="/todolist">ToDoList</NavLink>
+            </li>
           </ul>
 
           <Switch>
@@ -74,6 +79,9 @@ class App extends Component {
             </Router>
             <Router path="/search">
               <Search/>
+            </Router>
+            <Router path="/todolist">
+              <ToDoList/>
             </Router>
           </Switch>
         </div>
