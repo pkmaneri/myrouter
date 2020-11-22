@@ -2,53 +2,48 @@ import React, { Component } from "react"
 
 export default class ToDoList extends Component {
     state = {
-        list: [],
-        newItem: ""
+        lists: [],
+        newItem: "",
     }
     handleInput(e) {
         const newItem = (e.target.value)
         this.setState(prevState => {
-            console.log(prevState)
             return {
                 newItem: newItem,
-                list:prevState.list
+                lists: prevState.lists
             }
         })
     }
-    addItem(e) {
-        this.setState(prevState => {
+    addItem() {
+        this.setState((prevState) => {
             return {
-                    list: [...prevState.list, prevState.newItem],
-                    newItem: prevState.newItem
+                lists: [...prevState.lists, prevState.newItem]
             }
         })
     }
-
-    deleteItem(id) {
-        const list = [...this.state.list]
-        const updateList = list.filter(item => item.id !== id)
-        this.updateList({ list: updateList });
+    handleRemoveitem(index) {
+        let listarray = this.state.lists;
+        listarray.splice(index, 1)
+        this.setState({
+            lists: listarray
+        })
     }
-
     render() {
+
         return (
             <div className="ToDoList">
-                <div>
-                    Add item
-                    <br />
+                <div className="todo">
+                    Add Item
                     <input type="text" placeholder="type of item" value={this.state.newItem} onChange={this.handleInput.bind(this)}></input>
-                    <button onClick={this.addItem.bind(this)}>Add</button><br />
-                    <ul>
-                        {this.state.list.map(item => {
-                            return (
-                                <li key={item.id}>{item.value}
-                                    <button onClick={this.deleteItem.bind(this)}>X </button>
-                                </li>
-                            )
-                        })}
-                    </ul>
+                    <button onClick={this.addItem.bind(this)}>Add</button>
+                    {this.state.lists.map((itemval, id) => {
+                        return (
+                            <li key={id}>{itemval}
+                                <button onClick={this.handleRemoveitem.bind(this)}>X</button>
+                            </li>
+                        )
+                    })}
                 </div>
-                {this.state.newItem}
             </div>
         )
     }

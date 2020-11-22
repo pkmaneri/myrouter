@@ -17,7 +17,8 @@ import Product from './pages/Product';
 import Cart from'./pages/Cart'
 import Search from './pages/Search';
 import ToDoList from './pages/ToDoList';
-
+import Calculator from './pages/Calculator';
+import Flightbooking from './pages/Flightbooking';
 
 class App extends Component {
   render() {
@@ -53,6 +54,12 @@ class App extends Component {
             <li className="nav-item">
               <NavLink className="nav-link " to="/todolist">ToDoList</NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link " to="/calculator">Calculator</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link " to="/flightbooking">Flightbooking</NavLink>
+            </li>
           </ul>
 
           <Switch>
@@ -83,14 +90,18 @@ class App extends Component {
             <Router path="/todolist">
               <ToDoList/>
             </Router>
+            <Router path="/calculator">
+              <Calculator/>
+            </Router>
+            <Router path="/flightbooking">
+              <Flightbooking/>
+            </Router>
           </Switch>
         </div>
       </Router>
     );
   }
-
 }
-
 // You can think of these components as "pages"
 // in your app.
 
