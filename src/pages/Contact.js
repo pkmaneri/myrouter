@@ -111,8 +111,6 @@ export default class Contact extends Component {
     console.log(state);
     localStorage.setItem("contact", state)
 }
-
-
     render() {
         return (
             <div className="container">
